@@ -1,0 +1,6 @@
+rootProject.name = 'order-settlement-system'
+
+include 'order-module'
+include 'payment-module'
+include 'delivery-module'
+include 'settlement-module'
