@@ -1,7 +1,7 @@
-package com.example.payment.application.service;
+package com.example.paymentmodule.payment.application.service;
 
-import com.example.payment.domain.model.Payment;
-import com.example.payment.domain.repository.PaymentRepository;
+import com.example.paymentmodule.payment.domain.model.Payment;
+import com.example.paymentmodule.payment.domain.repository.PaymentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

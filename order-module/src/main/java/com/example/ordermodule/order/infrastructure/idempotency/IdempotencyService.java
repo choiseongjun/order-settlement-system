@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.idempotency;
+package com.example.ordermodule.order.infrastructure.idempotency;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

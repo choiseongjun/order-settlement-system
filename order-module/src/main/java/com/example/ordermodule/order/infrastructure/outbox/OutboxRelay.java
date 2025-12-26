@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.outbox;
+package com.example.ordermodule.order.infrastructure.outbox;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

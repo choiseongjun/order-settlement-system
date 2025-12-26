@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.saga.command;
+package com.example.ordermodule.order.infrastructure.saga.command;
 
 /**
  * Saga Command 베이스 인터페이스

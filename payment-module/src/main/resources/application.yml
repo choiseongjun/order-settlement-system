@@ -1,7 +1,16 @@
 spring:
   application:
     name: payment-service
-
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redis_password
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
   datasource:
     url: jdbc:postgresql://localhost:5433/payment_db
     username: payment_user

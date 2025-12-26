@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.outbox;
+package com.example.ordermodule.order.infrastructure.outbox;
 
 public enum OutboxStatus {
     PENDING,    // 발행 대기

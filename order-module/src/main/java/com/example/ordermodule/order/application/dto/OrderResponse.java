@@ -1,7 +1,7 @@
-package com.example.order.application.dto;
+package com.example.ordermodule.order.application.dto;
 
-import com.example.order.domain.model.Order;
-import com.example.order.domain.model.OrderStatus;
+import com.example.ordermodule.order.domain.model.Order;
+import com.example.ordermodule.order.domain.model.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,8 +1,8 @@
-package com.example.order.adapter.in.web;
+package com.example.ordermodule.order.adapter.in.web;
 
-import com.example.order.application.dto.OrderRequest;
-import com.example.order.application.dto.OrderResponse;
-import com.example.order.application.service.OrderService;
+import com.example.ordermodule.order.application.dto.OrderRequest;
+import com.example.ordermodule.order.application.dto.OrderResponse;
+import com.example.ordermodule.order.application.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

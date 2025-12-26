@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.saga;
+package com.example.ordermodule.order.infrastructure.saga;
 
 public enum SagaStatus {
     STARTED,        // Saga 시작

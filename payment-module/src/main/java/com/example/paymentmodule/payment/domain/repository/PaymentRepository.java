@@ -1,6 +1,6 @@
-package com.example.payment.domain.repository;
+package com.example.paymentmodule.payment.domain.repository;
 
-import com.example.payment.domain.model.Payment;
+import com.example.paymentmodule.payment.domain.model.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

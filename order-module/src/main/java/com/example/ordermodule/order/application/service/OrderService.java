@@ -1,10 +1,10 @@
-package com.example.order.application.service;
+package com.example.ordermodule.order.application.service;
 
-import com.example.order.application.dto.OrderRequest;
-import com.example.order.application.dto.OrderResponse;
-import com.example.order.domain.model.Order;
-import com.example.order.domain.repository.OrderRepository;
-import com.example.order.infrastructure.saga.OrderFulfillmentSagaOrchestrator;
+import com.example.ordermodule.order.application.dto.OrderRequest;
+import com.example.ordermodule.order.application.dto.OrderResponse;
+import com.example.ordermodule.order.domain.model.Order;
+import com.example.ordermodule.order.domain.repository.OrderRepository;
+import com.example.ordermodule.order.infrastructure.saga.OrderFulfillmentSagaOrchestrator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

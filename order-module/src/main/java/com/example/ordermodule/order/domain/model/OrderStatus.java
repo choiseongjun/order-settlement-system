@@ -1,4 +1,4 @@
-package com.example.order.domain.model;
+package com.example.ordermodule.order.domain.model;
 
 public enum OrderStatus {
     PENDING,            // 주문 생성 (결제 요청 전)

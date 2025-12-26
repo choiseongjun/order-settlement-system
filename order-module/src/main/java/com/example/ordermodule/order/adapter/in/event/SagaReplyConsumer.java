@@ -1,9 +1,9 @@
-package com.example.order.adapter.in.event;
+package com.example.ordermodule.order.adapter.in.event;
 
-import com.example.order.common.util.JsonUtil;
-import com.example.order.infrastructure.idempotency.IdempotencyService;
-import com.example.order.infrastructure.saga.OrderFulfillmentSagaOrchestrator;
-import com.example.order.infrastructure.saga.reply.*;
+import com.example.ordermodule.order.common.util.JsonUtil;
+import com.example.ordermodule.order.infrastructure.idempotency.IdempotencyService;
+import com.example.ordermodule.order.infrastructure.saga.OrderFulfillmentSagaOrchestrator;
+import com.example.ordermodule.order.infrastructure.saga.reply.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

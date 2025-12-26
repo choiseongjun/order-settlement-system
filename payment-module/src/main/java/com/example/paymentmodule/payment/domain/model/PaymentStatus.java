@@ -1,4 +1,4 @@
-package com.example.payment.domain.model;
+package com.example.paymentmodule.payment.domain.model;
 
 public enum PaymentStatus {
     PENDING,    // 결제 대기

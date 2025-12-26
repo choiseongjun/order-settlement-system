@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.outbox;
+package com.example.ordermodule.order.infrastructure.outbox;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

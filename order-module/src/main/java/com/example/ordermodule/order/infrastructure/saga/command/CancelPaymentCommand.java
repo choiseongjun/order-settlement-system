@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.saga.command;
+package com.example.ordermodule.order.infrastructure.saga.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

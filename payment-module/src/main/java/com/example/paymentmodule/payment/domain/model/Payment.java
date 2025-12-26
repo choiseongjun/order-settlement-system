@@ -1,4 +1,4 @@
-package com.example.payment.domain.model;
+package com.example.paymentmodule.payment.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

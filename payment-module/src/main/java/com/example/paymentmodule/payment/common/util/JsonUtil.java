@@ -1,4 +1,4 @@
-package com.example.payment.common.util;
+package com.example.paymentmodule.payment.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

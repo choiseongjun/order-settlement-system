@@ -1,4 +1,4 @@
-package com.example.order.common.util;
+package com.example.ordermodule.order.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

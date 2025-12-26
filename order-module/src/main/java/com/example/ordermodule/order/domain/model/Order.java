@@ -1,4 +1,4 @@
-package com.example.order.domain.model;
+package com.example.ordermodule.order.domain.model;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

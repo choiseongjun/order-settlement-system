@@ -1,9 +1,9 @@
-package com.example.payment.adapter.in.event;
+package com.example.paymentmodule.payment.adapter.in.event;
 
-import com.example.payment.application.service.PaymentService;
-import com.example.payment.common.util.JsonUtil;
-import com.example.payment.domain.model.Payment;
-import com.example.payment.domain.model.PaymentStatus;
+import com.example.paymentmodule.payment.application.service.PaymentService;
+import com.example.paymentmodule.payment.common.util.JsonUtil;
+import com.example.paymentmodule.payment.domain.model.Payment;
+import com.example.paymentmodule.payment.domain.model.PaymentStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

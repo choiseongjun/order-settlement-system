@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.config;
+package com.example.ordermodule.order.infrastructure.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

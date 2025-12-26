@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.saga;
+package com.example.ordermodule.order.infrastructure.saga;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

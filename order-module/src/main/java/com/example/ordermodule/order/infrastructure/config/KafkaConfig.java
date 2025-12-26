@@ -1,4 +1,4 @@
-package com.example.order.infrastructure.config;
+package com.example.ordermodule.order.infrastructure.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;

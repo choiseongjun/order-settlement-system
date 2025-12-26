@@ -1,7 +1,7 @@
-package com.example.order.domain.repository;
+package com.example.ordermodule.order.domain.repository;
 
-import com.example.order.domain.model.Order;
-import com.example.order.domain.model.OrderStatus;
+import com.example.ordermodule.order.domain.model.Order;
+import com.example.ordermodule.order.domain.model.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
