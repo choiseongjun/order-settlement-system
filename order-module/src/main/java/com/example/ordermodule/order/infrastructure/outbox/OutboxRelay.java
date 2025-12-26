@@ -65,7 +65,7 @@ public class OutboxRelay {
     }
 
     private void publishToKafka(Outbox outbox) {
-        String topic = getTopicName(outbox.getEventType());
+        String topic = outbox.getTopic();
         String key = String.valueOf(outbox.getAggregateId());
 
         kafkaTemplate.send(topic, key, outbox.getPayload())
@@ -74,13 +74,5 @@ public class OutboxRelay {
                     throw new RuntimeException("Kafka send failed", ex);
                 }
             });
-    }
-
-    private String getTopicName(String eventType) {
-        // OrderCreated → order.created
-        return eventType
-            .replaceAll("([A-Z])", ".$1")
-            .toLowerCase()
-            .substring(1);
     }
 }

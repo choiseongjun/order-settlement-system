@@ -4,6 +4,8 @@ import com.example.ordermodule.order.common.util.JsonUtil;
 import com.example.ordermodule.order.domain.model.Order;
 import com.example.ordermodule.order.domain.model.OrderStatus;
 import com.example.ordermodule.order.domain.repository.OrderRepository;
+import com.example.ordermodule.order.infrastructure.outbox.Outbox;
+import com.example.ordermodule.order.infrastructure.outbox.OutboxRepository;
 import com.example.ordermodule.order.infrastructure.saga.command.ApprovePaymentCommand;
 import com.example.ordermodule.order.infrastructure.saga.command.CancelPaymentCommand;
 import com.example.ordermodule.order.infrastructure.saga.command.CreateDeliveryCommand;
@@ -11,7 +13,6 @@ import com.example.ordermodule.order.infrastructure.saga.command.CreateSettlemen
 import com.example.ordermodule.order.infrastructure.saga.reply.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +27,7 @@ public class OrderFulfillmentSagaOrchestrator {
 
     private final SagaInstanceRepository sagaInstanceRepository;
     private final OrderRepository orderRepository;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final OutboxRepository outboxRepository;
 
     private static final String SAGA_TYPE = "ORDER_FULFILLMENT_SAGA";
 
@@ -61,7 +62,7 @@ public class OrderFulfillmentSagaOrchestrator {
     }
 
     /**
-     * 결제 승인 커맨드 발행
+     * 결제 승인 커맨드 발행 (Outbox 패턴)
      */
     private void sendApprovePaymentCommand(SagaInstance saga, Order order) {
         ApprovePaymentCommand command = ApprovePaymentCommand.builder()
@@ -72,11 +73,17 @@ public class OrderFulfillmentSagaOrchestrator {
             .paymentMethod("CARD")
             .build();
 
-        kafkaTemplate.send("saga.command.payment.approve",
-            saga.getSagaId(),
-            JsonUtil.toJson(command));
+        Outbox outbox = Outbox.builder()
+            .aggregateType("SAGA")
+            .aggregateId(order.getId())
+            .eventType("ApprovePaymentCommand")
+            .topic("saga.command.payment.approve")
+            .payload(JsonUtil.toJson(command))
+            .build();
 
-        log.info("ApprovePaymentCommand sent: sagaId={}", saga.getSagaId());
+        outboxRepository.save(outbox);
+
+        log.info("ApprovePaymentCommand saved to outbox: sagaId={}", saga.getSagaId());
     }
 
     /**
@@ -135,7 +142,7 @@ public class OrderFulfillmentSagaOrchestrator {
     }
 
     /**
-     * 배송 생성 커맨드 발행
+     * 배송 생성 커맨드 발행 (Outbox 패턴)
      */
     private void sendCreateDeliveryCommand(SagaInstance saga, Order order) {
         CreateDeliveryCommand command = CreateDeliveryCommand.builder()
@@ -147,11 +154,17 @@ public class OrderFulfillmentSagaOrchestrator {
             .recipientPhone(order.getRecipientPhone())
             .build();
 
-        kafkaTemplate.send("saga.command.delivery.create",
-            saga.getSagaId(),
-            JsonUtil.toJson(command));
+        Outbox outbox = Outbox.builder()
+            .aggregateType("SAGA")
+            .aggregateId(order.getId())
+            .eventType("CreateDeliveryCommand")
+            .topic("saga.command.delivery.create")
+            .payload(JsonUtil.toJson(command))
+            .build();
 
-        log.info("CreateDeliveryCommand sent: sagaId={}", saga.getSagaId());
+        outboxRepository.save(outbox);
+
+        log.info("CreateDeliveryCommand saved to outbox: sagaId={}", saga.getSagaId());
     }
 
     /**
@@ -204,7 +217,7 @@ public class OrderFulfillmentSagaOrchestrator {
     }
 
     /**
-     * 결제 취소 커맨드 발행 (보상)
+     * 결제 취소 커맨드 발행 (보상 - Outbox 패턴)
      */
     private void sendCancelPaymentCommand(SagaInstance saga, Long paymentId, String reason) {
         CancelPaymentCommand command = CancelPaymentCommand.builder()
@@ -213,11 +226,17 @@ public class OrderFulfillmentSagaOrchestrator {
             .reason(reason)
             .build();
 
-        kafkaTemplate.send("saga.command.payment.cancel",
-            saga.getSagaId(),
-            JsonUtil.toJson(command));
+        Outbox outbox = Outbox.builder()
+            .aggregateType("SAGA")
+            .aggregateId(saga.getAggregateId())
+            .eventType("CancelPaymentCommand")
+            .topic("saga.command.payment.cancel")
+            .payload(JsonUtil.toJson(command))
+            .build();
 
-        log.info("CancelPaymentCommand sent: sagaId={}, paymentId={}",
+        outboxRepository.save(outbox);
+
+        log.info("CancelPaymentCommand saved to outbox: sagaId={}, paymentId={}",
             saga.getSagaId(), paymentId);
     }
 
@@ -243,7 +262,7 @@ public class OrderFulfillmentSagaOrchestrator {
     }
 
     /**
-     * 정산 생성 커맨드 발행
+     * 정산 생성 커맨드 발행 (Outbox 패턴)
      */
     private void sendCreateSettlementCommand(SagaInstance saga, Order order) {
         Long paymentId = saga.getCompensationDataAs("paymentId", Long.class);
@@ -255,11 +274,17 @@ public class OrderFulfillmentSagaOrchestrator {
             .amount(order.getTotalAmount())
             .build();
 
-        kafkaTemplate.send("saga.command.settlement.create",
-            saga.getSagaId(),
-            JsonUtil.toJson(command));
+        Outbox outbox = Outbox.builder()
+            .aggregateType("SAGA")
+            .aggregateId(order.getId())
+            .eventType("CreateSettlementCommand")
+            .topic("saga.command.settlement.create")
+            .payload(JsonUtil.toJson(command))
+            .build();
 
-        log.info("CreateSettlementCommand sent: sagaId={}", saga.getSagaId());
+        outboxRepository.save(outbox);
+
+        log.info("CreateSettlementCommand saved to outbox: sagaId={}", saga.getSagaId());
     }
 
     /**

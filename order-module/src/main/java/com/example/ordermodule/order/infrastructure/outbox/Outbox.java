@@ -30,6 +30,9 @@ public class Outbox {
     @Column(nullable = false, length = 100)
     private String eventType;
 
+    @Column(nullable = false, length = 255)
+    private String topic;
+
     @Column(nullable = false, columnDefinition = "TEXT")
     private String payload;
 
@@ -49,10 +52,11 @@ public class Outbox {
     private String errorMessage;
 
     @Builder
-    public Outbox(String aggregateType, Long aggregateId, String eventType, String payload) {
+    public Outbox(String aggregateType, Long aggregateId, String eventType, String topic, String payload) {
         this.aggregateType = aggregateType;
         this.aggregateId = aggregateId;
         this.eventType = eventType;
+        this.topic = topic;
         this.payload = payload;
         this.status = OutboxStatus.PENDING;
         this.createdAt = LocalDateTime.now();
