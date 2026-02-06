@@ -1,6 +1,5 @@
 # 주문-결제-정산 마이크로서비스 시스템
 
-> **7년차 레벨의 엔터프라이즈급 분산 시스템**
 >
 > Transactional Outbox 패턴과 Saga 패턴을 활용한 최종 일관성(Eventual Consistency) 보장
 
@@ -41,11 +40,11 @@
 
 ### 주요 특징
 
-✅ **분산 트랜잭션 관리** - Saga 패턴으로 비즈니스 트랜잭션 보장
-✅ **최종 일관성** - Outbox 패턴으로 안정적인 이벤트 발행
-✅ **멱등성 보장** - 중복 메시지 처리 방지 (Redis 기반)
-✅ **장애 복구** - DLQ, 재시도, 보상 트랜잭션
-✅ **관찰성** - 분산 추적, 메트릭, 구조화된 로깅
+ **분산 트랜잭션 관리** - Saga 패턴으로 비즈니스 트랜잭션 보장
+ **최종 일관성** - Outbox 패턴으로 안정적인 이벤트 발행
+ **멱등성 보장** - 중복 메시지 처리 방지 (Redis 기반)
+ **장애 복구** - DLQ, 재시도, 보상 트랜잭션
+ **관찰성** - 분산 추적, 메트릭, 구조화된 로깅
 
 ## 빠른 시작
 
@@ -119,21 +118,13 @@ order-settlement-system/
 ├── payment-module/            # 결제 서비스 (Port 8082)
 ├── settlement-module/         # 정산 서비스 (Port 8083)
 ├── order-module-infra/        # Docker Compose 인프라
-├── ARCHITECTURE.md            # 🔥 아키텍처 설계 문서
-├── OUTBOX_PATTERN.md         # 🔥 Outbox 패턴 가이드
-├── SAGA_PATTERN.md           # 🔥 Saga 패턴 가이드
-├── PROJECT_STRUCTURE.md      # 🔥 프로젝트 구조 가이드
+├── ARCHITECTURE.md            #  아키텍처 설계 문서
+├── OUTBOX_PATTERN.md         #  Outbox 패턴 가이드
+├── SAGA_PATTERN.md           #  Saga 패턴 가이드
+├── PROJECT_STRUCTURE.md      #  프로젝트 구조 가이드
 └── README.md                 # 이 파일
 ```
 
-## 핵심 문서
-
-반드시 읽어야 할 설계 문서:
-
-1. **[ARCHITECTURE.md](./ARCHITECTURE.md)** - 전체 시스템 아키텍처, 서비스 구성, 통신 패턴
-2. **[OUTBOX_PATTERN.md](./OUTBOX_PATTERN.md)** - Transactional Outbox 패턴 상세 구현
-3. **[SAGA_PATTERN.md](./SAGA_PATTERN.md)** - Saga 패턴 (Choreography) 구현
-4. **[PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md)** - 프로젝트 구조 및 구현 우선순위
 
 ## 주요 플로우
 
@@ -170,7 +161,7 @@ order-settlement-system/
 
 ## 개발 로드맵
 
-### Phase 1: 기본 인프라 ✅
+### Phase 1: 기본 인프라 
 - [x] Docker Compose 설정
 - [x] 아키텍처 설계 문서 작성
 - [x] Outbox/Saga 패턴 가이드 작성
